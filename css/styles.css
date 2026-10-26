@@ -798,14 +798,16 @@ h2 {
 
 .contact-link {
   display: inline-flex;
+  max-width: 100%;
+  min-width: 0;
   margin-top: 22px;
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-size: clamp(1.05rem, 4.5vw, 2rem);
   text-decoration: none;
   color: var(--lime-ink);
   background: var(--lime);
   padding: 14px 18px;
   border-radius: 14px;
-  line-height: 1;
+  line-height: 1.15;
   box-shadow: 0 12px 36px rgba(214, 255, 63, 0.16);
 }
 
@@ -813,6 +815,7 @@ h2 {
   font-family: var(--body);
   font-weight: 600;
   letter-spacing: -0.03em;
+  min-width: 0;
 }
 
 .site-footer {
