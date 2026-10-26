@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="scaTitle scaDesc">
+  <title id="scaTitle">Sound Core Adventure illustration</title>
+  <desc id="scaDesc">Seven stones of different colours and shapes along a melody line. An illustration, not a screenshot of the game.</desc>
+  <rect width="1440" height="900" fill="#10131b"/>
+  <radialGradient id="glow" cx="50%" cy="48%" r="42%">
+    <stop offset="0%" stop-color="#ff7aa2" stop-opacity="0.22"/>
+    <stop offset="55%" stop-color="#7eb6ff" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#10131b" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1440" height="900" fill="url(#glow)"/>
+  <g fill="none" stroke="#d6ff3f" stroke-opacity="0.18" stroke-width="2">
+    <path d="M120 470 C 280 360, 420 580, 560 450 S 860 340, 1040 470 1320 420, 1340 400"/>
+  </g>
+  <g fill="none" stroke="#f3f5ef" stroke-opacity="0.28" stroke-width="3" stroke-linecap="round">
+    <path d="M160 520 C 300 400, 390 600, 520 470"/>
+    <path d="M560 455 C 680 360, 760 560, 900 450"/>
+    <path d="M940 470 C 1060 390, 1160 540, 1280 430"/>
+  </g>
+  <!-- circle -->
+  <g transform="translate(210 430)">
+    <circle r="54" fill="#5ce1ff"/>
+    <circle r="54" fill="none" stroke="#f3f5ef" stroke-opacity="0.35" stroke-width="3"/>
+  </g>
+  <!-- rounded square -->
+  <g transform="translate(400 520)">
+    <rect x="-46" y="-46" width="92" height="92" rx="18" fill="#7dffa1"/>
+  </g>
+  <!-- triangle -->
+  <g transform="translate(590 390)">
+    <path d="M0 -58 L52 42 H-52 Z" fill="#ffb020"/>
+  </g>
+  <!-- diamond -->
+  <g transform="translate(770 530)">
+    <rect x="-44" y="-44" width="88" height="88" rx="8" transform="rotate(45)" fill="#ff4ecd"/>
+  </g>
+  <!-- hexagon -->
+  <g transform="translate(960 400)">
+    <polygon points="0,-56 48,-28 48,28 0,56 -48,28 -48,-28" fill="#9b8cff"/>
+  </g>
+  <!-- ring -->
+  <g transform="translate(1140 500)">
+    <circle r="50" fill="none" stroke="#ff7a59" stroke-width="22"/>
+  </g>
+  <!-- capsule -->
+  <g transform="translate(1310 410)">
+    <rect x="-28" y="-58" width="56" height="116" rx="28" fill="#f4f6f1"/>
+  </g>
+</svg>

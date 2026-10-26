@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bill · Williams Morency Debe</title>
+  <meta name="description" content="Portfolio of Bill (Williams Morency Debe), a high school senior and self-taught full-stack developer. Projects: WDIII Tech Vault, Last Local, and Sound Core Adventure.">
+  <meta name="theme-color" content="#090a0e">
+  <link rel="canonical" href="https://perfechateyou.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bill · Williams Morency Debe">
+  <meta property="og:description" content="Aspiring self-taught full-stack developer. High school senior. WDIII Tech Vault, Last Local, and Sound Core Adventure.">
+  <meta property="og:url" content="https://perfechateyou.github.io/">
+  <meta property="og:image" content="https://perfechateyou.github.io/assets/avatar.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bill · Williams Morency Debe">
+  <meta name="twitter:description" content="Aspiring self-taught full-stack developer. High school senior.">
+  <meta name="twitter:image" content="https://perfechateyou.github.io/assets/avatar.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preload" as="image" href="assets/avatar.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Williams Morency Debe",
+    "alternateName": ["Bill", "PerfecHateyOu"],
+    "url": "https://perfechateyou.github.io/",
+    "image": "https://perfechateyou.github.io/assets/avatar.jpg",
+    "sameAs": ["https://github.com/PerfecHateyOu"],
+    "description": "Aspiring Self Taught Full-Stack Developer. High school senior."
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="bg" aria-hidden="true">
+    <div class="bg-glow"></div>
+    <canvas id="grid"></canvas>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#top">
+        <span class="logo-mark" aria-hidden="true">B</span>
+        <span class="logo-word">Bill</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Menu</span>
+        <span class="burger" aria-hidden="true"></span>
+      </button>
+      <nav id="site-nav" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#stack">Stack</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-github" href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Williams Morency Debe</p>
+          <h1 id="hero-title">Bill</h1>
+          <div class="accent-bar" aria-hidden="true"></div>
+          <p class="full-name">High school senior · self-taught full-stack developer</p>
+          <p class="bio-label">GitHub bio</p>
+          <p class="bio">
+            <span class="sr-only">Aspiring Self Taught Full-Stack Developer</span>
+            <span id="bio-text" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
+          </p>
+          <p class="lede">I build a consumer-tech research archive, a Three.js subway game whose scenes are written in code, and a musical adventure about talking without a shared language.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#projects">View projects</a>
+            <a class="btn btn-ghost" href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer">GitHub profile<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+        <figure class="portrait">
+          <div class="portrait-frame">
+            <img src="assets/avatar.jpg" width="800" height="800" alt="Portrait photo of Bill (Williams Morency Debe).">
+          </div>
+          <figcaption>PerfecHateyOu · GitHub</figcaption>
+        </figure>
+      </div>
+      <div class="wrap">
+        <nav class="toc" aria-label="Projects on this page">
+          <ol id="project-index"></ol>
+        </nav>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <p class="section-kicker">01 — Work</p>
+        <h2 id="projects-title">Projects</h2>
+        <p class="section-lead">A research archive, a subway game, and a musical adventure.</p>
+        <noscript>
+          <p class="noscript-note">Project cards are rendered from <code>js/projects.js</code>. Enable JavaScript to see them, or open that file on GitHub.</p>
+        </noscript>
+        <div class="project-list" id="project-list"></div>
+      </div>
+    </section>
+
+    <section class="section" id="stack" aria-labelledby="stack-title">
+      <div class="wrap">
+        <p class="section-kicker">02 — Tools</p>
+        <h2 id="stack-title">Tech stack</h2>
+        <p class="section-lead">Grouped from the stack of each project on this page.</p>
+        <div class="stack-grid" id="stack-list"></div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap about-grid">
+        <div class="about-copy">
+          <p class="section-kicker">03 — About</p>
+          <h2 id="about-title">About</h2>
+          <p>I'm Bill — <strong>Williams Morency Debe</strong>. I'm a high school senior and a self-taught full-stack developer.</p>
+          <p>On GitHub I'm <strong>PerfecHateyOu</strong>. The bio on that profile reads: “Aspiring Self Taught Full-Stack Developer.”</p>
+          <p>WDIII Tech Vault and Last Local are public. Sound Core Adventure is a private TypeScript project from October 2026, described as an MIT project, so this page does not link to its source.</p>
+        </div>
+        <dl class="fact-list" id="about-facts"></dl>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="contact-panel">
+          <p class="section-kicker">04 — Contact</p>
+          <h2 id="contact-title">Find me on GitHub.</h2>
+          <p class="lede">This profile is the public contact for Bill — Williams Morency Debe.</p>
+          <a class="contact-link" href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer"><span>github.com/<wbr>PerfecHateyOu</span><span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© 2026 Williams Morency Debe</p>
+      <p><a href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer">@PerfecHateyOu<span class="sr-only"> (opens in a new tab)</span></a> · <a href="#top">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
