@@ -31,7 +31,7 @@ The tech-stack section is generated from every project's `stack`, so you do not 
 
 Put new screenshots in `assets/projects/`.
 
-`assets/projects/wdiii-tech-vault.jpg` and `assets/projects/last-local.jpg` are screenshots of the live sites. `assets/projects/sca.svg` is an illustration, not a screenshot: Sound Core Adventure's README does not list a public URL.
+`assets/projects/wdiii-tech-vault.jpg` and `assets/projects/last-local.jpg` are screenshots of the live sites. `assets/projects/sca.svg` is an illustration, not a screenshot of the official site. The official Sound Core Adventure site is at [`projects/sca/`](projects/sca/).
 
 ## Preview locally
 
@@ -67,3 +67,4 @@ If Pages was previously set to **GitHub Actions**, switch **Source** to **Deploy
 | `js/projects.js` | Project data |
 | `js/main.js` | Renders projects and the stack, nav, typing, grid |
 | `assets/` | Avatar, favicon, project images |
+| `projects/sca/` | Official Sound Core Adventure site (standalone HTML) |
