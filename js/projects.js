@@ -79,13 +79,13 @@ window.PROJECTS = [
     accent: "pink",
     source: "private",
     blurb:
-      "An interactive musical adventure about nonverbal expression. Sound has vanished from the world. Players learn melodies that carry human emotions, sing each region back to life, then use those melodies to talk with friends without sharing a language.",
+      "The official site for Sound Core Adventure (SCA) — a musical adventure where melody is a language anyone can speak. Play the Resonance Stones, explore eight regions, learn the Melody Codex, jam with friends, and compose phrases with SCA- share codes.",
     points: [
-      "Six regions, one emotion each: Whispering Grove (Joy), Stillwater Lake (Calm), Rain Hollow (Sorrow), Ember Peaks (Courage), Crystal Spires (Wonder), and the Sound Core (Harmony).",
+      "Eight regions, one emotion each: Whispering Grove (Joy), Stillwater Lake (Calm), Rain Hollow (Sorrow), Ember Peaks (Courage), Crystal Spires (Wonder), the Sound Core (Harmony), the Amber Dunes (Longing), and the Astral Observatory (Serenity).",
       "Players echo melodies on seven Resonance Stones. The Melody Codex teaches phrases such as “Hello! I'm happy.” and “Let's go!”. Jam Circle seats up to six players — each with a colour, shape, and instrument, and nobody has a name. Co-op melodies cannot be finished alone.",
       "Every stone has its own colour, shape, position, and key, and every sound also shows up as a shaped ripple. Keyboard or switch playable. Judging checks stones and order, not timing. Guiding light turns on after misses. There is no fail state. A reduce-motion setting is included, and the OS reduced-motion preference is respected.",
     ],
-    tags: ["TypeScript", "Private repository", "MIT project"],
+    tags: ["v1.0.0", "TypeScript", "Private repository", "MIT project"],
     stack: [
       { name: "TypeScript", group: "Languages" },
       { name: "Web Audio", group: "Interface" },
@@ -95,11 +95,11 @@ window.PROJECTS = [
     ],
     image: "assets/projects/sca.svg",
     imageAlt:
-      "Illustrated stand-in of seven resonance stones, each a different colour and shape. Sound Core Adventure has no public live URL in its README, so this is not a screenshot.",
+      "Illustrated stand-in of seven resonance stones, each a different colour and shape. This is not a screenshot of the official site.",
     imageKind: "illustration",
     imagePosition: "center",
-    live: null,
+    live: "https://perfechateyou.github.io/projects/sca/",
     repo: null,
-    note: "Private repository, so the source is not linked. The README does not list a public live URL.",
+    note: "Private repository, so the source is not linked. Official companion site is hosted on this portfolio.",
   },
 ];
