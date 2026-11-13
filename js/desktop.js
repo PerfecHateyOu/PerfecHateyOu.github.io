@@ -274,14 +274,21 @@
     windows().forEach(function (win) {
       win.classList.remove("is-open", "is-min", "is-active");
     });
+    if (isNarrow()) {
+      // Narrow screens: land on the desktop so the icons stay tappable.
+      // An open window is fixed full-screen at <=760px and covers every
+      // desktop icon, so auto-opening one on load traps the user behind
+      // it with no icon to tap. Deep links (#wdiii-tech-vault etc.)
+      // still open their window via applyHash; this only changes the
+      // no-hash landing state.
+      syncTaskbar();
+      return;
+    }
     const top = document.getElementById("top");
     const projects = document.getElementById("projects");
-    if (!isNarrow() && top && top.dataset.placed !== "1") layoutPair();
-    if (isNarrow()) openWindow(top, opts);
-    else {
-      openWindow(projects, opts);
-      openWindow(top, opts);
-    }
+    if (top && top.dataset.placed !== "1") layoutPair();
+    openWindow(projects, opts);
+    openWindow(top, opts);
   }
 
   function selectIcon(icon) {
