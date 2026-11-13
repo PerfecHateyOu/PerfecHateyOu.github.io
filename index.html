@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Bill · Williams Morency Debe</title>
   <meta name="description" content="Portfolio of Bill (Williams Morency Debe), a high school senior and self-taught full-stack developer. Projects: WDIII Tech Vault, Last Local, and Sound Core Adventure.">
-  <meta name="theme-color" content="#090a0e">
+  <meta name="theme-color" content="#245edb">
   <link rel="canonical" href="https://perfechateyou.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Bill · Williams Morency Debe">
@@ -18,11 +18,10 @@
   <meta name="twitter:image" content="https://perfechateyou.github.io/assets/avatar.jpg">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/avatar.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preload" as="image" href="assets/bliss.svg">
   <link rel="preload" as="image" href="assets/avatar.jpg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add("js");</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,119 +36,367 @@
   </script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="bg" aria-hidden="true">
-    <div class="bg-glow"></div>
-    <canvas id="grid"></canvas>
+  <a class="skip" href="#top">Skip to content</a>
+  <div class="bliss" aria-hidden="true"></div>
+  <div id="live" class="sr-only" aria-live="polite"></div>
+
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="ico-monitor" viewBox="0 0 32 32">
+      <rect x="3" y="4" width="26" height="18" rx="2" fill="#d5dbe3" stroke="#5c6770" stroke-width="1"/>
+      <rect x="5.5" y="6.5" width="21" height="13" fill="#0c4e9e"/>
+      <rect x="7.5" y="8.2" width="12" height="7.2" fill="#3c8fe0"/>
+      <rect x="7.5" y="16" width="17" height="1.6" fill="#7ec8ff" opacity="0.8"/>
+      <rect x="13" y="22" width="6" height="3" fill="#8b949e"/>
+      <rect x="9" y="25" width="14" height="2.4" rx="0.6" fill="#6a737c"/>
+    </symbol>
+    <symbol id="ico-folder" viewBox="0 0 32 32">
+      <path fill="#e2b12a" d="M4 10h8l2 2h14v2H4z"/>
+      <path fill="#ffd860" stroke="#c49216" stroke-width="1" d="M3.5 12.5h25v13a1.5 1.5 0 0 1-1.5 1.5h-22A1.5 1.5 0 0 1 3.5 25.5z"/>
+      <path fill="#ffe58a" d="M5 14h22v3H5z" opacity="0.7"/>
+    </symbol>
+    <symbol id="ico-note" viewBox="0 0 32 32">
+      <path fill="#fffef6" stroke="#6d6a62" stroke-width="1" d="M7 3.5h13l6 6V28a1.2 1.2 0 0 1-1.2 1.2H7A1.2 1.2 0 0 1 5.8 28V4.7A1.2 1.2 0 0 1 7 3.5z"/>
+      <path fill="#efece0" stroke="#6d6a62" stroke-width="1" d="M20 3.5v6h6"/>
+      <path stroke="#d24b4b" stroke-width="1" d="M9 8v18"/>
+      <path stroke="#8eb4e0" stroke-width="1" d="M11 12h10M11 16h10M11 20h10M11 24h7"/>
+    </symbol>
+    <symbol id="ico-sliders" viewBox="0 0 32 32">
+      <rect x="4" y="4" width="24" height="24" rx="2" fill="#e7e4da" stroke="#6a675e" stroke-width="1"/>
+      <rect x="8" y="10" width="16" height="2" rx="1" fill="#b9b6aa"/>
+      <rect x="8" y="16" width="16" height="2" rx="1" fill="#b9b6aa"/>
+      <rect x="8" y="22" width="16" height="2" rx="1" fill="#b9b6aa"/>
+      <circle cx="12" cy="11" r="2.3" fill="#3a7ad4" stroke="#11386e" stroke-width="0.6"/>
+      <circle cx="20" cy="17" r="2.3" fill="#3c8c32" stroke="#145214" stroke-width="0.6"/>
+      <circle cx="15" cy="23" r="2.3" fill="#e09a12" stroke="#7a5208" stroke-width="0.6"/>
+    </symbol>
+    <symbol id="ico-mail" viewBox="0 0 32 32">
+      <rect x="3" y="7" width="26" height="18" rx="1.5" fill="#f7fbff" stroke="#5d6e80" stroke-width="1"/>
+      <path fill="#d5e8fb" stroke="#5d6e80" stroke-width="1" d="M4 8.2 16 17.5 28 8.2"/>
+      <path fill="none" stroke="#8aa4bc" stroke-width="1" d="M4 24.2 12.5 16M28 24.2 19.5 16"/>
+    </symbol>
+    <symbol id="ico-file" viewBox="0 0 32 32">
+      <path fill="#fff" stroke="#5c6570" stroke-width="1" d="M8 3h11l7 7v18.2a.8.8 0 0 1-.8.8H8.8a.8.8 0 0 1-.8-.8V3.8A.8.8 0 0 1 8.8 3z"/>
+      <path fill="#eceae2" stroke="#5c6570" stroke-width="1" d="M19 3v7h7"/>
+      <path stroke="#d0cdc4" stroke-width="1" d="M11 15h10M11 18.5h10M11 22h7"/>
+      <rect x="10" y="24.5" width="12" height="2.4" fill="currentColor"/>
+    </symbol>
+    <symbol id="ico-globe" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="11" fill="#1d6fd0" stroke="currentColor" stroke-width="1.2"/>
+      <ellipse cx="16" cy="16" rx="5" ry="11" fill="none" stroke="#e7f3ff" stroke-width="1.2"/>
+      <path fill="none" stroke="#e7f3ff" stroke-width="1.2" d="M5 16h22M7.2 10.5h17.6M7.2 21.5h17.6"/>
+    </symbol>
+    <symbol id="ico-shortcut" viewBox="0 0 16 16">
+      <rect x="1" y="7" width="10" height="8" rx="1" fill="#fff" stroke="#222" stroke-width="0.8"/>
+      <path fill="#1a56c4" stroke="#fff" stroke-width="0.6" d="M6 2.2 13.2 5.2 8.6 6.4 10.6 11.2 6.2 7.6 3.4 9.2z"/>
+    </symbol>
+    <symbol id="ico-power" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="12" fill="#c4372c"/>
+      <path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" d="M16 8v8"/>
+      <path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" d="M11 11.2a7 7 0 1 0 10 0"/>
+    </symbol>
+    <symbol id="ico-logoff" viewBox="0 0 32 32">
+      <circle cx="13" cy="12" r="4" fill="#f4d7b0"/>
+      <path fill="#3a7ad4" d="M6 24c1.2-4 3.6-6 7-6s5.8 2 7 6z"/>
+      <path fill="none" stroke="#145214" stroke-width="2" stroke-linecap="round" d="M20 10h7M24 7l4 3-4 3"/>
+    </symbol>
+    <symbol id="ico-warn" viewBox="0 0 32 32">
+      <path fill="#ffd34d" stroke="#8a6a10" stroke-width="1" d="M16 3 30 28H2z"/>
+      <rect x="14.6" y="12" width="2.8" height="8" rx="1" fill="#3a3110"/>
+      <circle cx="16" cy="23.2" r="1.6" fill="#3a3110"/>
+    </symbol>
+  </svg>
+
+  <div class="desktop" id="desktop">
+    <nav class="icons" id="desktop-icons" aria-label="Desktop">
+      <a class="desk-icon" href="#top">
+        <span class="ico-wrap"><svg class="ico" aria-hidden="true"><use href="#ico-monitor"></use></svg></span>
+        <span class="label">Welcome</span>
+      </a>
+      <a class="desk-icon" href="#projects">
+        <span class="ico-wrap"><svg class="ico" aria-hidden="true"><use href="#ico-folder"></use></svg></span>
+        <span class="label">Projects</span>
+      </a>
+      <a class="desk-icon" href="#stack">
+        <span class="ico-wrap"><svg class="ico" aria-hidden="true"><use href="#ico-sliders"></use></svg></span>
+        <span class="label">Tech stack</span>
+      </a>
+      <a class="desk-icon" href="#about">
+        <span class="ico-wrap"><svg class="ico" aria-hidden="true"><use href="#ico-note"></use></svg></span>
+        <span class="label">About</span>
+      </a>
+      <a class="desk-icon" href="#contact">
+        <span class="ico-wrap"><svg class="ico" aria-hidden="true"><use href="#ico-mail"></use></svg></span>
+        <span class="label">Contact</span>
+      </a>
+      <div id="desktop-project-icons"></div>
+    </nav>
+
+    <main id="main" class="windows" tabindex="-1">
+      <section class="window is-open" id="top" data-name="Welcome" aria-labelledby="hero-title">
+        <div class="titlebar">
+          <svg class="ico ico-sm" aria-hidden="true"><use href="#ico-monitor"></use></svg>
+          <span class="titlebar-text">Welcome</span>
+          <div class="titlebar-controls">
+            <button type="button" class="win-btn win-min" aria-label="Minimize Welcome"><span></span></button>
+            <button type="button" class="win-btn win-max" aria-label="Maximize Welcome"><span></span></button>
+            <button type="button" class="win-btn win-close" aria-label="Close Welcome"><span></span></button>
+          </div>
+        </div>
+        <div class="address"><span class="address-label">Address</span><div class="address-field">Portfolio\Welcome</div></div>
+        <div class="window-body">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="kicker">Williams Morency Debe</p>
+              <h1 id="hero-title">Bill</h1>
+              <div class="accent-bar" aria-hidden="true"></div>
+              <p class="full-name">High school senior · self-taught full-stack developer</p>
+              <p class="bio-label">GitHub bio</p>
+              <p class="bio">
+                <span class="sr-only">Aspiring Self Taught Full-Stack Developer</span>
+                <span id="bio-text" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
+              </p>
+              <p class="lede">I build a consumer-tech research archive, a Three.js subway game whose scenes are written in code, and a musical adventure about talking without a shared language.</p>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#projects">View projects</a>
+                <a class="btn btn-ghost" href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer">GitHub profile<span class="sr-only"> (opens in a new tab)</span></a>
+              </div>
+            </div>
+            <figure class="portrait">
+              <div class="portrait-frame">
+                <img src="assets/avatar.jpg" width="800" height="800" alt="Portrait photo of Bill (Williams Morency Debe).">
+              </div>
+              <figcaption>PerfecHateyOu · GitHub</figcaption>
+            </figure>
+          </div>
+          <nav class="toc" aria-label="Projects on this page">
+            <ol id="project-index"></ol>
+          </nav>
+        </div>
+        <footer class="statusbar">
+          <span class="status-cell">Ready</span>
+          <button type="button" class="resizer" aria-label="Resize Welcome"></button>
+        </footer>
+      </section>
+
+      <section class="window" id="projects" data-name="Projects" aria-labelledby="projects-title">
+        <div class="titlebar">
+          <svg class="ico ico-sm" aria-hidden="true"><use href="#ico-folder"></use></svg>
+          <span class="titlebar-text">Projects</span>
+          <div class="titlebar-controls">
+            <button type="button" class="win-btn win-min" aria-label="Minimize Projects"><span></span></button>
+            <button type="button" class="win-btn win-max" aria-label="Maximize Projects"><span></span></button>
+            <button type="button" class="win-btn win-close" aria-label="Close Projects"><span></span></button>
+          </div>
+        </div>
+        <div class="address"><span class="address-label">Address</span><div class="address-field">Portfolio\Projects</div></div>
+        <div class="window-body">
+          <p class="section-kicker">01 — Work</p>
+          <h2 id="projects-title">Projects</h2>
+          <p class="section-lead">A research archive, a subway game, and a musical adventure.</p>
+          <noscript>
+            <p class="noscript-note">Project cards are rendered from <code>js/projects.js</code>. Enable JavaScript to see them, or open that file on GitHub.</p>
+          </noscript>
+          <div class="project-list" id="project-list"></div>
+        </div>
+        <footer class="statusbar">
+          <span class="status-cell" id="projects-count">Ready</span>
+          <button type="button" class="resizer" aria-label="Resize Projects"></button>
+        </footer>
+      </section>
+
+      <section class="window" id="stack" data-name="Tech stack" aria-labelledby="stack-title">
+        <div class="titlebar">
+          <svg class="ico ico-sm" aria-hidden="true"><use href="#ico-sliders"></use></svg>
+          <span class="titlebar-text">Tech stack</span>
+          <div class="titlebar-controls">
+            <button type="button" class="win-btn win-min" aria-label="Minimize Tech stack"><span></span></button>
+            <button type="button" class="win-btn win-max" aria-label="Maximize Tech stack"><span></span></button>
+            <button type="button" class="win-btn win-close" aria-label="Close Tech stack"><span></span></button>
+          </div>
+        </div>
+        <div class="address"><span class="address-label">Address</span><div class="address-field">Portfolio\Tech stack</div></div>
+        <div class="window-body">
+          <p class="section-kicker">02 — Tools</p>
+          <h2 id="stack-title">Tech stack</h2>
+          <p class="section-lead">Grouped from the stack of each project on this page.</p>
+          <div class="stack-grid" id="stack-list"></div>
+        </div>
+        <footer class="statusbar">
+          <span class="status-cell">Ready</span>
+          <button type="button" class="resizer" aria-label="Resize Tech stack"></button>
+        </footer>
+      </section>
+
+      <section class="window" id="about" data-name="About" aria-labelledby="about-title">
+        <div class="titlebar">
+          <svg class="ico ico-sm" aria-hidden="true"><use href="#ico-note"></use></svg>
+          <span class="titlebar-text">About</span>
+          <div class="titlebar-controls">
+            <button type="button" class="win-btn win-min" aria-label="Minimize About"><span></span></button>
+            <button type="button" class="win-btn win-max" aria-label="Maximize About"><span></span></button>
+            <button type="button" class="win-btn win-close" aria-label="Close About"><span></span></button>
+          </div>
+        </div>
+        <div class="address"><span class="address-label">Address</span><div class="address-field">Portfolio\About</div></div>
+        <div class="window-body">
+          <div class="about-grid">
+            <div class="about-copy">
+              <p class="section-kicker">03 — About</p>
+              <h2 id="about-title">About</h2>
+              <p>I'm Bill — <strong>Williams Morency Debe</strong>. I'm a high school senior and a self-taught full-stack developer.</p>
+              <p>On GitHub I'm <strong>PerfecHateyOu</strong>. The bio on that profile reads: “Aspiring Self Taught Full-Stack Developer.”</p>
+              <p>WDIII Tech Vault and Last Local are public. Sound Core Adventure is a private TypeScript project from October 2026, described as an MIT project, so this page does not link to its source. Its official site is on this portfolio.</p>
+            </div>
+            <dl class="fact-list" id="about-facts"></dl>
+          </div>
+          <footer class="fine-print">
+            <p>© 2026 Williams Morency Debe</p>
+            <p><a href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer">@PerfecHateyOu<span class="sr-only"> (opens in a new tab)</span></a> · <a href="#top">Back to top</a></p>
+          </footer>
+        </div>
+        <footer class="statusbar">
+          <span class="status-cell">Ready</span>
+          <button type="button" class="resizer" aria-label="Resize About"></button>
+        </footer>
+      </section>
+
+      <section class="window" id="contact" data-name="Contact" aria-labelledby="contact-title">
+        <div class="titlebar">
+          <svg class="ico ico-sm" aria-hidden="true"><use href="#ico-mail"></use></svg>
+          <span class="titlebar-text">Contact</span>
+          <div class="titlebar-controls">
+            <button type="button" class="win-btn win-min" aria-label="Minimize Contact"><span></span></button>
+            <button type="button" class="win-btn win-max" aria-label="Maximize Contact"><span></span></button>
+            <button type="button" class="win-btn win-close" aria-label="Close Contact"><span></span></button>
+          </div>
+        </div>
+        <div class="address"><span class="address-label">Address</span><div class="address-field">Portfolio\Contact</div></div>
+        <div class="window-body">
+          <div class="contact-panel">
+            <p class="section-kicker">04 — Contact</p>
+            <h2 id="contact-title">Find me on GitHub.</h2>
+            <p class="lede">This profile is the public contact for Bill — Williams Morency Debe.</p>
+            <a class="contact-link" href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer"><span>github.com/<wbr>PerfecHateyOu</span><span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+        <footer class="statusbar">
+          <span class="status-cell">Ready</span>
+          <button type="button" class="resizer" aria-label="Resize Contact"></button>
+        </footer>
+      </section>
+    </main>
   </div>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="#top">
-        <span class="logo-mark" aria-hidden="true">B</span>
-        <span class="logo-word">Bill</span>
+  <nav class="start-menu" id="start-menu" aria-label="Start" hidden>
+    <div class="start-user">
+      <img src="assets/avatar.jpg" width="84" height="84" alt="">
+      <p><strong>Bill</strong><span>Williams Morency Debe</span></p>
+    </div>
+    <div class="start-columns">
+      <div class="start-left">
+        <a href="#top"><svg class="ico ico-sm" aria-hidden="true"><use href="#ico-monitor"></use></svg><span>Welcome</span></a>
+        <a href="#projects"><svg class="ico ico-sm" aria-hidden="true"><use href="#ico-folder"></use></svg><span>Projects</span></a>
+        <a href="#stack"><svg class="ico ico-sm" aria-hidden="true"><use href="#ico-sliders"></use></svg><span>Tech stack</span></a>
+        <a href="#about"><svg class="ico ico-sm" aria-hidden="true"><use href="#ico-note"></use></svg><span>About</span></a>
+        <a href="#contact"><svg class="ico ico-sm" aria-hidden="true"><use href="#ico-mail"></use></svg><span>Contact</span></a>
+        <div class="start-sep" role="separator"></div>
+        <p class="start-label" id="start-project-label">Projects</p>
+        <div id="start-project-links"></div>
+      </div>
+      <div class="start-right">
+        <p class="start-label">On the web</p>
+        <a class="start-ext" href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer"><svg class="ico ico-sm" aria-hidden="true"><use href="#ico-globe"></use></svg><span>GitHub profile</span><span class="sr-only"> (opens in a new tab)</span></a>
+        <div id="start-live-links"></div>
+      </div>
+    </div>
+    <div class="start-foot">
+      <button type="button" id="logoff-button"><svg class="ico ico-sm" aria-hidden="true"><use href="#ico-logoff"></use></svg><span>Log Off</span></button>
+      <button type="button" id="shutdown-button"><svg class="ico ico-sm" aria-hidden="true"><use href="#ico-power"></use></svg><span>Turn Off Computer</span></button>
+    </div>
+  </nav>
+
+  <footer class="taskbar">
+    <button type="button" class="start-btn" id="start-button" aria-haspopup="true" aria-expanded="false" aria-controls="start-menu">
+      <svg class="flag" viewBox="0 0 20 20" aria-hidden="true">
+        <path fill="#f04a23" d="M1 2h8.2L8 9.2H1z"/>
+        <path fill="#7fba00" d="M10.4 2H19v6.4l-.8.8h-7.8z"/>
+        <path fill="#00a4ef" d="M1 10.6h7.2L9.2 18H1z"/>
+        <path fill="#ffb900" d="M10.2 10.8H19V18h-8z"/>
+      </svg>
+      <span class="start-word">start</span>
+    </button>
+    <div class="quick-launch">
+      <a class="ql" href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in a new tab)">
+        <svg class="ico ico-sm" aria-hidden="true"><use href="#ico-globe"></use></svg>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="sr-only">Menu</span>
-        <span class="burger" aria-hidden="true"></span>
+    </div>
+    <span class="tb-sep" aria-hidden="true"></span>
+    <div class="tasks" id="taskbar-tasks" aria-label="Open windows"></div>
+    <div class="tray">
+      <button type="button" class="clock" id="clock" aria-expanded="false" aria-controls="clock-pop">
+        <time id="clock-time" datetime="">--:--</time>
       </button>
-      <nav id="site-nav" aria-label="Primary">
-        <a href="#projects">Projects</a>
-        <a href="#stack">Stack</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-github" href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a>
-      </nav>
     </div>
-  </header>
-
-  <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="kicker">Williams Morency Debe</p>
-          <h1 id="hero-title">Bill</h1>
-          <div class="accent-bar" aria-hidden="true"></div>
-          <p class="full-name">High school senior · self-taught full-stack developer</p>
-          <p class="bio-label">GitHub bio</p>
-          <p class="bio">
-            <span class="sr-only">Aspiring Self Taught Full-Stack Developer</span>
-            <span id="bio-text" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
-          </p>
-          <p class="lede">I build a consumer-tech research archive, a Three.js subway game whose scenes are written in code, and a musical adventure about talking without a shared language.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#projects">View projects</a>
-            <a class="btn btn-ghost" href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer">GitHub profile<span class="sr-only"> (opens in a new tab)</span></a>
-          </div>
-        </div>
-        <figure class="portrait">
-          <div class="portrait-frame">
-            <img src="assets/avatar.jpg" width="800" height="800" alt="Portrait photo of Bill (Williams Morency Debe).">
-          </div>
-          <figcaption>PerfecHateyOu · GitHub</figcaption>
-        </figure>
-      </div>
-      <div class="wrap">
-        <nav class="toc" aria-label="Projects on this page">
-          <ol id="project-index"></ol>
-        </nav>
-      </div>
-    </section>
-
-    <section class="section" id="projects" aria-labelledby="projects-title">
-      <div class="wrap">
-        <p class="section-kicker">01 — Work</p>
-        <h2 id="projects-title">Projects</h2>
-        <p class="section-lead">A research archive, a subway game, and a musical adventure.</p>
-        <noscript>
-          <p class="noscript-note">Project cards are rendered from <code>js/projects.js</code>. Enable JavaScript to see them, or open that file on GitHub.</p>
-        </noscript>
-        <div class="project-list" id="project-list"></div>
-      </div>
-    </section>
-
-    <section class="section" id="stack" aria-labelledby="stack-title">
-      <div class="wrap">
-        <p class="section-kicker">02 — Tools</p>
-        <h2 id="stack-title">Tech stack</h2>
-        <p class="section-lead">Grouped from the stack of each project on this page.</p>
-        <div class="stack-grid" id="stack-list"></div>
-      </div>
-    </section>
-
-    <section class="section" id="about" aria-labelledby="about-title">
-      <div class="wrap about-grid">
-        <div class="about-copy">
-          <p class="section-kicker">03 — About</p>
-          <h2 id="about-title">About</h2>
-          <p>I'm Bill — <strong>Williams Morency Debe</strong>. I'm a high school senior and a self-taught full-stack developer.</p>
-          <p>On GitHub I'm <strong>PerfecHateyOu</strong>. The bio on that profile reads: “Aspiring Self Taught Full-Stack Developer.”</p>
-          <p>WDIII Tech Vault and Last Local are public. Sound Core Adventure is a private TypeScript project from October 2026, described as an MIT project, so this page does not link to its source. Its official site is on this portfolio.</p>
-        </div>
-        <dl class="fact-list" id="about-facts"></dl>
-      </div>
-    </section>
-
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="wrap">
-        <div class="contact-panel">
-          <p class="section-kicker">04 — Contact</p>
-          <h2 id="contact-title">Find me on GitHub.</h2>
-          <p class="lede">This profile is the public contact for Bill — Williams Morency Debe.</p>
-          <a class="contact-link" href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer"><span>github.com/<wbr>PerfecHateyOu</span><span class="sr-only"> (opens in a new tab)</span></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <p>© 2026 Williams Morency Debe</p>
-      <p><a href="https://github.com/PerfecHateyOu" target="_blank" rel="noopener noreferrer">@PerfecHateyOu<span class="sr-only"> (opens in a new tab)</span></a> · <a href="#top">Back to top</a></p>
-    </div>
+    <button type="button" class="show-desktop" id="show-desktop" aria-label="Show desktop" title="Show desktop"></button>
   </footer>
+
+  <div class="clock-pop" id="clock-pop" hidden>
+    <p id="clock-date"></p>
+  </div>
+
+  <div class="scrim" id="logoff-scrim" hidden>
+    <div class="window dialog is-active" role="alertdialog" aria-modal="true" aria-labelledby="logoff-title" aria-describedby="logoff-text">
+      <div class="titlebar">
+        <svg class="ico ico-sm" aria-hidden="true"><use href="#ico-logoff"></use></svg>
+        <span class="titlebar-text" id="logoff-title">Log Off Windows</span>
+        <div class="titlebar-controls">
+          <button type="button" class="win-btn win-close" id="logoff-close" aria-label="Close Log Off Windows"><span></span></button>
+        </div>
+      </div>
+      <div class="window-body dialog-body">
+        <svg class="dialog-ico" aria-hidden="true"><use href="#ico-warn"></use></svg>
+        <p id="logoff-text">Log off closes the open windows and returns to the desktop.</p>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="logoff-confirm">Log Off</button>
+        <button type="button" class="btn" id="logoff-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="scrim" id="shutdown-scrim" hidden>
+    <div class="window dialog is-active" role="dialog" aria-modal="true" aria-labelledby="shutdown-title" aria-describedby="shutdown-text">
+      <div class="titlebar">
+        <svg class="ico ico-sm" aria-hidden="true"><use href="#ico-power"></use></svg>
+        <span class="titlebar-text" id="shutdown-title">Turn off computer</span>
+        <div class="titlebar-controls">
+          <button type="button" class="win-btn win-close" id="shutdown-close" aria-label="Close Turn off computer"><span></span></button>
+        </div>
+      </div>
+      <div class="window-body dialog-body">
+        <svg class="dialog-ico" aria-hidden="true"><use href="#ico-power"></use></svg>
+        <div>
+          <p id="shutdown-text">What do you want the computer to do?</p>
+          <div class="power-list">
+            <button type="button" data-power="standby"><strong>Stand By</strong><small>Hide every window</small></button>
+            <button type="button" data-power="off"><strong>Turn Off</strong><small>Show the shutdown screen</small></button>
+            <button type="button" data-power="restart"><strong>Restart</strong><small>Reload this page</small></button>
+          </div>
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="shutdown-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="off-screen" id="off-screen" role="dialog" aria-modal="true" aria-labelledby="off-title" hidden>
+    <p id="off-title">It's now safe to turn off your computer.</p>
+    <button type="button" class="btn" id="power-on">Back to the desktop</button>
+  </div>
 
   <script src="js/projects.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/desktop.js"></script>
 </body>
 </html>

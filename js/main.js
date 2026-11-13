@@ -104,7 +104,7 @@
         const sourceLabel = project.source === "private" ? "Private" : "Public";
 
         return (
-          '<article class="project reveal" id="' + esc(id) + '" data-accent="' + esc(project.accent || "lime") + '" style="transition-delay:' + Math.min(index * 70, 280) + 'ms">' +
+          '<article class="project" id="' + esc(id) + '" data-accent="' + esc(project.accent || "lime") + '">' +
           media +
           '<div class="project-body">' +
           '<p class="meta-row"><span>' + num(index) + "</span><span>Created " + esc(project.created || "—") + "</span><span>" + sourceLabel + "</span></p>" +
@@ -155,7 +155,7 @@
             );
           })
           .join("");
-        return '<section class="stack-group reveal"><h3>' + esc(group) + "</h3><ul>" + items + "</ul></section>";
+        return '<section class="stack-group"><h3>' + esc(group) + "</h3><ul>" + items + "</ul></section>";
       })
       .join("");
   }
@@ -175,23 +175,66 @@
       .join("");
   }
 
-  function initReveal() {
-    const nodes = document.querySelectorAll(".reveal");
-    if (motionQuery.matches || !("IntersectionObserver" in window)) {
-      nodes.forEach(function (node) { node.classList.add("is-in"); });
-      return;
+  function fileIcon(withShortcut) {
+    if (!withShortcut) {
+      return '<svg class="ico ico-sm" aria-hidden="true"><use href="#ico-file"></use></svg>';
     }
-    const observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in");
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    return (
+      '<span class="ico-wrap"><svg class="ico" aria-hidden="true"><use href="#ico-file"></use></svg>' +
+      '<svg class="shortcut" aria-hidden="true"><use href="#ico-shortcut"></use></svg></span>'
     );
-    nodes.forEach(function (node) { observer.observe(node); });
+  }
+
+  function renderDesktopIcons() {
+    const root = document.getElementById("desktop-project-icons");
+    if (!root) return;
+    root.innerHTML = projects
+      .map(function (project) {
+        const id = project.id || slug(project.title);
+        return (
+          '<a class="desk-icon" href="#' + esc(id) + '" data-accent="' + esc(project.accent || "lime") + '">' +
+          fileIcon(true) +
+          '<span class="label">' + esc(project.title) + "</span></a>"
+        );
+      })
+      .join("");
+  }
+
+  function renderStartMenu() {
+    const projectsRoot = document.getElementById("start-project-links");
+    const liveRoot = document.getElementById("start-live-links");
+    const label = document.getElementById("start-project-label");
+    if (label) label.hidden = projects.length === 0;
+    if (projectsRoot) {
+      projectsRoot.innerHTML = projects
+        .map(function (project) {
+          const id = project.id || slug(project.title);
+          return (
+            '<a href="#' + esc(id) + '" data-accent="' + esc(project.accent || "lime") + '">' +
+            fileIcon(false) +
+            "<span>" + esc(project.title) + "</span></a>"
+          );
+        })
+        .join("");
+    }
+    if (liveRoot) {
+      liveRoot.innerHTML = projects
+        .filter(function (project) { return hasLink(project.live); })
+        .map(function (project) {
+          return (
+            '<a class="start-ext" href="' + esc(project.live) + '" target="_blank" rel="noopener noreferrer">' +
+            '<svg class="ico ico-sm" aria-hidden="true"><use href="#ico-globe"></use></svg>' +
+            "<span>" + esc(project.title) + "</span>" +
+            '<span class="sr-only"> (opens in a new tab)</span></a>'
+          );
+        })
+        .join("");
+    }
+    const count = document.getElementById("projects-count");
+    if (count) {
+      const n = projects.length;
+      count.textContent = n + (n === 1 ? " object" : " objects");
+    }
   }
 
   function initTyping() {
@@ -216,191 +259,11 @@
     window.setTimeout(step, 280);
   }
 
-  function initNav() {
-    const header = document.querySelector(".site-header");
-    const toggle = document.querySelector(".nav-toggle");
-    const nav = document.getElementById("site-nav");
-    if (!header || !toggle || !nav) return;
-
-    function closeMenu() {
-      nav.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-    }
-
-    toggle.addEventListener("click", function () {
-      const open = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", open ? "false" : "true");
-      nav.classList.toggle("is-open", !open);
-      if (!open) {
-        const first = nav.querySelector("a");
-        if (first) first.focus();
-      }
-    });
-
-    nav.addEventListener("click", function (event) {
-      if (event.target.closest("a")) closeMenu();
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && nav.classList.contains("is-open")) {
-        closeMenu();
-        toggle.focus();
-      }
-    });
-
-    window.addEventListener("resize", function () {
-      if (window.innerWidth >= 900) closeMenu();
-    });
-
-    function onScroll() {
-      header.classList.toggle("is-scrolled", window.scrollY > 8);
-    }
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    const sectionLinks = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
-    const sections = sectionLinks
-      .map(function (link) {
-        return document.querySelector(link.getAttribute("href"));
-      })
-      .filter(Boolean);
-
-    if ("IntersectionObserver" in window) {
-      const spy = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            sectionLinks.forEach(function (link) {
-              const on = link.getAttribute("href") === "#" + entry.target.id;
-              if (on) link.setAttribute("aria-current", "true");
-              else link.removeAttribute("aria-current");
-            });
-          });
-        },
-        { rootMargin: "-40% 0px -50% 0px", threshold: 0.01 }
-      );
-      sections.forEach(function (section) { spy.observe(section); });
-    }
-  }
-
-  function initBackdrop() {
-    const canvas = document.getElementById("grid");
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let width = 0;
-    let height = 0;
-    let raf = 0;
-    let running = false;
-    let last = 0;
-    const sparks = [];
-
-    function seed() {
-      sparks.length = 0;
-      const count = width < 700 ? 8 : 16;
-      for (let i = 0; i < count; i += 1) {
-        sparks.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() < 0.5 ? -1 : 1) * (18 + Math.random() * 42),
-          vy: (Math.random() < 0.5 ? -1 : 1) * (12 + Math.random() * 28),
-        });
-      }
-    }
-
-    function resize() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      seed();
-      draw(0);
-    }
-
-    function draw(dt) {
-      ctx.clearRect(0, 0, width, height);
-      const gap = width < 700 ? 52 : 68;
-      ctx.beginPath();
-      ctx.strokeStyle = "rgba(214, 255, 63, 0.055)";
-      ctx.lineWidth = 1;
-      for (let x = gap / 2; x < width; x += gap) {
-        ctx.moveTo(x + 0.5, 0);
-        ctx.lineTo(x + 0.5, height);
-      }
-      for (let y = gap / 2; y < height; y += gap) {
-        ctx.moveTo(0, y + 0.5);
-        ctx.lineTo(width, y + 0.5);
-      }
-      ctx.stroke();
-
-      ctx.fillStyle = "rgba(214, 255, 63, 0.28)";
-      for (let x = gap / 2; x < width; x += gap) {
-        for (let y = gap / 2; y < height; y += gap) {
-          ctx.fillRect(x - 1, y - 1, 2, 2);
-        }
-      }
-
-      if (dt && !motionQuery.matches) {
-        ctx.fillStyle = "rgba(214, 255, 63, 0.9)";
-        sparks.forEach(function (spark) {
-          spark.x += spark.vx * dt;
-          spark.y += spark.vy * dt;
-          if (spark.x < 0 || spark.x > width) spark.vx *= -1;
-          if (spark.y < 0 || spark.y > height) spark.vy *= -1;
-          ctx.beginPath();
-          ctx.arc(spark.x, spark.y, 1.7, 0, Math.PI * 2);
-          ctx.fill();
-        });
-      }
-    }
-
-    function stop() {
-      running = false;
-      cancelAnimationFrame(raf);
-    }
-
-    function start() {
-      if (running || motionQuery.matches) return;
-      running = true;
-      last = performance.now();
-      const step = function (now) {
-        if (!running) return;
-        const dt = Math.min(0.034, (now - last) / 1000);
-        last = now;
-        draw(dt);
-        raf = requestAnimationFrame(step);
-      };
-      raf = requestAnimationFrame(step);
-    }
-
-    resize();
-    window.addEventListener("resize", resize, { passive: true });
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) stop();
-      else start();
-    });
-    if (typeof motionQuery.addEventListener === "function") {
-      motionQuery.addEventListener("change", function () {
-        if (motionQuery.matches) {
-          stop();
-          draw(0);
-        } else {
-          start();
-        }
-      });
-    }
-    start();
-  }
-
   renderIndex();
   renderProjects();
   renderStack();
   renderFacts();
-  initReveal();
+  renderDesktopIcons();
+  renderStartMenu();
   initTyping();
-  initNav();
-  initBackdrop();
 })();

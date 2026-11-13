@@ -4,9 +4,11 @@ Personal site for Williams Morency Debe (Bill), GitHub [PerfecHateyOu](https://g
 
 No build step. HTML, CSS, and JavaScript are served from the repository root.
 
+The homepage is a Windows XP (Luna) style desktop: an original hill-and-sky wallpaper, draggable windows, desktop icons, a Start menu, and a taskbar. On a narrow screen each window fills the page above the taskbar. Everything still comes from the same project list.
+
 ## Add a project
 
-Edit the `window.PROJECTS` array in [`js/projects.js`](js/projects.js). Append an object. The array order is the order on the page (hero index, project cards, and the short list in About).
+Edit the `window.PROJECTS` array in [`js/projects.js`](js/projects.js). Append an object. The array order is the order on the page (hero index, project cards, desktop icons, Start menu entries, and the short list in About).
 
 The tech-stack section is generated from every project's `stack`, so you do not maintain a second list.
 
@@ -63,8 +65,10 @@ If Pages was previously set to **GitHub Actions**, switch **Source** to **Deploy
 | --- | --- |
 | `index.html` | Page structure, about copy, contact link |
 | `404.html` | GitHub Pages 404 |
-| `css/styles.css` | Layout, theme, motion |
+| `css/styles.css` | Windows XP theme and layout |
 | `js/projects.js` | Project data |
-| `js/main.js` | Renders projects and the stack, nav, typing, grid |
+| `js/main.js` | Renders projects, the stack, desktop icons, and Start menu links |
+| `js/desktop.js` | Windows, taskbar, Start menu, and clock |
+| `assets/bliss.svg` | Original desktop wallpaper |
 | `assets/` | Avatar, favicon, project images |
 | `projects/sca/` | Official Sound Core Adventure site (standalone HTML) |
